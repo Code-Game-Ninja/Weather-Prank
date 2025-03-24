@@ -1,0 +1,290 @@
+:root {
+    --primary: #00ffcc;
+    --secondary: #7b2cbf;
+    --background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.particles {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    z-index: -1;
+    animation: particles 20s linear infinite;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.logo {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.cloud-logo {
+    width: 120px;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+input {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.1rem;
+    width: 300px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: 2px solid var(--primary);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background: var(--secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+/* Loading Screen Styles */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.loading-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.satellite {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    animation: satelliteOrbit 4s linear infinite;
+}
+
+/* Prank Message Styles */
+.prank-message {
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    text-align: center;
+    max-width: 500px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Ensure opacity change when shown */
+.prank-message.show {
+    opacity: 1;
+    display: flex;
+}
+
+.weather-icon {
+    font-size: 4rem;
+    margin: 1rem 0;
+    animation: spin 2s linear infinite;
+}
+
+.glow-on-hover {
+    background: var(--primary);
+    color: #1a1a2e;
+    margin-top: 3rem;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes particles {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes satelliteOrbit {
+    from {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    position: absolute;
+    bottom: -2rem;
+    color: #ff4444;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    input {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .prank-message {
+        width: 90%;
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cloud-logo {
+        width: 80px;
+    }
+
+    input {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    button.glow-on-hover {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 160px;
+        margin: 0 auto;
+    }
+
+    .reload-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.3rem;
+    }
+
+    .prank-message {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .weather-icon {
+        font-size: 3rem;
+    }
+
+    .error-message {
+        position: relative;
+        bottom: auto;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 1rem;
+    }
+
+    input {
+        font-size: 0.95rem;
+    }
+
+    .prank-message {
+        padding: 1rem;
+    }
+
+    button.glow-on-hover {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+        max-width: 140px;
+    }
+
+    .reload-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
