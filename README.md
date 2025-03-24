@@ -24,7 +24,7 @@ It pretends to fetch real weather data, loads a fancy UI, and then *bam*—asks 
 ---
 
 ## 🚀 **Live Demo**
-🔗 **[Try the Prank Here!](https://code-game-ninja.github.io/Weather-Castor-Prank/)** 
+🔗 **[Try the Prank Here!](https://code-game-ninja.github.io/Weather-Prank/)** 
 
 ---
 
